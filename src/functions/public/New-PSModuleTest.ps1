@@ -3,17 +3,18 @@
 function New-PSModuleTest {
     <#
         .SYNOPSIS
-        Performs tests on a module.
+        Greets a person by name.
+
+        .DESCRIPTION
+        This function greets a person by name.
 
         .EXAMPLE
-        Test-PSModule -Name 'World'
+        New-PSModuleTest -Name 'World'
 
-        "Hello, World!"
+        Greets the person named 'World'.
 
-        .NOTES
-        Testing if a module can have a [Markdown based link](https://example.com).
-        !"#¤%&/()=?`´^¨*'-_+§½{[]}<>|@£$€¥¢:;.,"
-        \[This is a test\]
+        .LINK
+        https://psmodule.io/Functions/New-PSModuleTest/
     #>
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
         'PSUseShouldProcessForStateChangingFunctions', '', Scope = 'Function',
@@ -28,10 +29,7 @@ function New-PSModuleTest {
         [string] $Name
     )
     Write-Output "Hello, $Name!"
+
+
+    $FontFilePath = 'C:\Fonts\CodeNewRoman\CodeNewRomanNerdFontPropo-Regular.tff'
 }
-
-New-Alias New-PSModuleTestAlias3 New-PSModuleTest
-New-Alias -Name New-PSModuleTestAlias4 -Value New-PSModuleTest
-
-
-Set-Alias New-PSModuleTestAlias5 New-PSModuleTest
