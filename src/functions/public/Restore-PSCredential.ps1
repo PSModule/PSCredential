@@ -1,25 +1,21 @@
 ﻿function Restore-PSCredential {
     <#
         .SYNOPSIS
-        Restores a PSCredential object from a saved XML file.
+        Restores a PSCredential object from a file.
 
         .DESCRIPTION
-        The Restore-PSCredential function retrieves a PSCredential object that was previously saved using Export-Clixml.
+        The Restore-PSCredential function retrieves a PSCredential object that was previously saved using `Save-PSCredential`.
         It reads the file from the specified path and ensures the content is a valid PSCredential object before returning it.
 
         .EXAMPLE
-        Restore-PSCredential -Path 'C:\secure\mycredential.xml'
+        Restore-PSCredential -Path 'C:\secure\mycredential.cred'
 
-        Restores the PSCredential object from the file located at 'C:\secure\mycredential.xml'.
+        Restores the PSCredential object from the file located at `C:\secure\mycredential.cred`.
 
         .EXAMPLE
-        'C:\secure\mycredential.xml' | Restore-PSCredential
+        'C:\secure\mycredential.cred' | Restore-PSCredential
 
         Uses pipeline input to restore the PSCredential object from the specified file path.
-
-        .NOTES
-        Ensure that the credential file was previously exported using Export-Clixml and is properly encrypted.
-        This function does not decrypt credentials saved by other means.
 
         .LINK
         https://psmodule.io/PSCredential/Functions/Restore-PSCredential/

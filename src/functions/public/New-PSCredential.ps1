@@ -6,7 +6,7 @@
         .DESCRIPTION
         This function generates a PSCredential object using a specified username and password.
         The password can be provided as a secure string or a plain text string, which will be
-        converted into a secure string automatically.
+        converted into a SecureString automatically.
 
         .EXAMPLE
         New-PSCredential
@@ -17,10 +17,6 @@
         New-PSCredential -Username 'admin' -Password (ConvertTo-SecureString 'P@ssw0rd!' -AsPlainText -Force)
 
         Creates a PSCredential object for the specified username and password.
-
-        .NOTES
-        This function suppresses warnings about using plain text passwords because it is
-        explicitly designed to create PSCredential objects.
 
         .LINK
         https://psmodule.io/PSCredential/Functions/New-PSCredential/

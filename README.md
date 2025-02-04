@@ -1,10 +1,12 @@
 # PSCredential
 
-`PSCredential` is a PowerShell module that provides functions for securely managing credentials. It allows users to create, save, and restore `PSCredential` objects using encrypted XML files.
+`PSCredential` is a PowerShell module that provides functions for managing credentials.
+It allows users to create, save, and restore `PSCredential` objects from disk.
 
 ## Prerequisites
 
 This module requires:
+
 - The [PSModule framework](https://github.com/PSModule) for building, testing, and publishing the module.
 
 ## Installation
@@ -38,27 +40,27 @@ New-PSCredential -Username 'admin' -Password (ConvertTo-SecureString 'P@ssw0rd!'
 
 ### Example 2: Saving a `PSCredential` object to a file
 
-You can save a credential securely to an XML file using `Save-PSCredential`:
+You can save a credential to a file using `Save-PSCredential`:
 
 ```powershell
 $credential = Get-Credential
-Save-PSCredential -Credential $credential -Path 'C:\secure\credential.xml'
+Save-PSCredential -Credential $credential -Path 'C:\secure\credential.cred'
 ```
 
-This securely saves the credential to `C:\secure\credential.xml`.
+This saves the credential to `C:\secure\credential.cred`.
 
 ### Example 3: Restoring a `PSCredential` object from a file
 
-To restore a credential object from a previously saved XML file:
+To restore a credential object from a previously saved file:
 
 ```powershell
-Restore-PSCredential -Path 'C:\secure\credential.xml'
+Restore-PSCredential -Path 'C:\secure\credential.cred'
 ```
 
 Alternatively, you can use pipeline input:
 
 ```powershell
-'C:\secure\credential.xml' | Restore-PSCredential
+'C:\secure\credential.cred' | Restore-PSCredential
 ```
 
 ### Find more examples
@@ -100,6 +102,7 @@ If you are a developer, we welcome your contributions!
 Please read the [Contribution Guidelines](CONTRIBUTING.md) for more information.
 You can either help by picking up an existing issue or submit a new one if you have an idea for a feature or improvement.
 
-## Acknowledgements
+## Disclaimer
 
-A big thanks to all contributors and the [PSModule framework](https://github.com/PSModule) for providing the foundation for module development.
+The Export-Clixml cmdlet is used to save credentials to disk, is not secure on Linux and MacOS, and should be used with caution.
+For more information read the [Export-Clixml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.5#example-4-exporting-a-credential-object-on-linux-or-macos) documentation.
