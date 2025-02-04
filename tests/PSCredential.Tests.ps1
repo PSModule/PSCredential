@@ -29,6 +29,9 @@ Describe 'PSCredential' {
             $filePath = '$HOME/Admin.cred'
             { Save-PSCredential -Credential $testCred -Path $filePath } | Should -Not -Throw
             Test-Path -Path $filePath | Should -Be $true
+
+            $content = Get-Content -Path $filePath
+            Write-Verbose $content -Verbose
         }
     }
     Context 'Function: Restore-PSCredential' {
