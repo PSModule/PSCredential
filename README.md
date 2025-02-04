@@ -104,5 +104,5 @@ You can either help by picking up an existing issue or submit a new one if you h
 
 ## Disclaimer
 
-The Export-Clixml cmdlet is used to save credentials to disk, is not secure on Linux and MacOS, and should be used with caution.
+The Export-Clixml cmdlet is used to save credentials to disk, is not secure on Linux and macOS, and should be used with caution.
 For more information read the [Export-Clixml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/export-clixml?view=powershell-7.5#example-4-exporting-a-credential-object-on-linux-or-macos) documentation.
