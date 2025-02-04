@@ -29,7 +29,4 @@ function New-PSModuleTest {
         [string] $Name
     )
     Write-Output "Hello, $Name!"
-
-
-    $FontFilePath = 'C:\Fonts\CodeNewRoman\CodeNewRomanNerdFontPropo-Regular.tff'
 }
