@@ -31,7 +31,7 @@ Describe 'PSCredential' {
             Test-Path -Path $filePath | Should -Be $true
 
             $content = Get-Content -Path $filePath
-            Write-Verbose $content -Verbose
+            Write-Verbose ($content | Out-String) -Verbose
         }
     }
     Context 'Function: Restore-PSCredential' {
