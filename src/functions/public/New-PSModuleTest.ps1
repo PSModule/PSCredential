@@ -1,6 +1,4 @@
-﻿#Requires -Modules @{ModuleName='PSSemVer'; ModuleVersion='1.0'}
-
-function New-PSModuleTest {
+﻿function New-PSModuleTest {
     <#
         .SYNOPSIS
         Greets a person by name.
