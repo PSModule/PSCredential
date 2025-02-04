@@ -1,39 +1,35 @@
 ﻿function New-PSCredential {
     <#
-        .SYNOPSIS
-        Creates a PSCredential
-
-        .DESCRIPTION
-        Takes in a UserName and a plain text password and creates a PSCredential
-
-        .EXAMPLE
-        New-PSCredential -UserName "Admin" -Password "P@ssw0rd!"
-
-        This creates a PSCredential with username "Admin" and password "P@ssw0rd!"
-
-        .EXAMPLE
-        New-PSCredential -UserName "Admin"
-
-        Prompts user for password and creates a PSCredential with username "Admin" and password the user provided.
-
-        .EXAMPLE
-        $SecretPassword = "P@ssw0rd!" | ConvertTo-SecureString -Force
-        New-PSCredential -UserName "Admin" -Password $SecretPassword
 
     #>
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions', '',
+        Justification = 'Does not change state, just holding a credential in memory'
+    )]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidUsingUsernameAndPasswordParams', '',
+        Justification = 'The function is for creating a PSCredential'
+    )]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidUsingConvertToSecureStringWithPlainText', '',
+        Justification = 'The function is for creating a PSCredential'
+    )]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSAvoidUsingPlainTextForPassword', '',
+        Justification = 'The function is for creating a PSCredential'
+    )]
     [OutputType([System.Management.Automation.PSCredential])]
-    [Cmdletbinding(SupportsShouldProcess)]
+    [Cmdletbinding()]
     param(
-        # The username of the PSCredential
         [Parameter()]
         [string] $Username = (Read-Host -Prompt 'Enter a username'),
-
-        # The plain text password of the PSCredential
         [Parameter()]
-        [SecureString] $Password = (Read-Host -Prompt 'Enter Password' -AsSecureString)
+        [object] $Password = (Read-Host -Prompt 'Enter Password' -AsSecureString)
     )
 
-    if ($PSCmdlet.ShouldProcess('PSCredential', 'Create a new')) {
-        New-Object -TypeName System.Management.Automation.PSCredential($Username, $Password)
+    if ($Password -is [String]) {
+        $Password = ConvertTo-SecureString -String $Password -AsPlainText -Force
     }
+
+    New-Object -TypeName System.Management.Automation.PSCredential($Username, $Password)
 }
