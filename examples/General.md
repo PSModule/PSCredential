@@ -1,4 +1,4 @@
-﻿# PSCredential Management Functions
+﻿# PSCredential Examples
 
 This documentation provides details on three PowerShell functions for managing `PSCredential` objects:
 
@@ -63,14 +63,11 @@ Saves the predefined credential securely to `C:\secure\mycreds.xml`.
 
 ## `Restore-PSCredential`
 
-### Description
-
 The `Restore-PSCredential` function retrieves a `PSCredential` object that was previously saved using `Export-Clixml`.
 It reads the file from the specified path and ensures the content is a valid `PSCredential` object before returning it.
 
-### Examples
 
-#### Example 1: Restoring Credentials from a File
+### Example 1: Restoring Credentials from a File
 
 ```powershell
 Restore-PSCredential -Path 'C:\secure\mycredential.xml'
@@ -78,7 +75,7 @@ Restore-PSCredential -Path 'C:\secure\mycredential.xml'
 
 Restores the `PSCredential` object from the file located at `'C:\secure\mycredential.xml'`.
 
-#### Example 2: Using Pipeline Input to Restore Credentials
+### Example 2: Using Pipeline Input to Restore Credentials
 
 ```powershell
 'C:\secure\mycredential.xml' | Restore-PSCredential
@@ -87,8 +84,3 @@ Restores the `PSCredential` object from the file located at `'C:\secure\mycreden
 Uses pipeline input to restore the `PSCredential` object from the specified file path.
 
 ---
-
-### Notes
-
-- The XML file storing the credentials is encrypted and can only be decrypted by the same user and machine that saved it.
-- Always handle credentials securely and avoid storing plain text passwords.
